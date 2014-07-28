@@ -5,23 +5,27 @@
 //
 $(function() {
   // prefix
-  var unotag = function(name) {
-    var prefix = "data-uno-";
-    return "[" + prefix  + name + "]"
+  var prefix = "data-uno-";
+  var tagname = function(name) {
+    return prefix  + name;
+  }
+  var tagname_block = function(name) {
+    return "["+ tagname(name) + "]"
   }
 
   //
   // reversely check the checkbox
   // @param revcheck name of target checkboxes to controll
   //
-  var tag = unotag("revcheck");
-  $(tag).on("click", function(obj, evt) {
+  var plugin = "revcheck";
+  $(tagname_block(plugin)).on("click", function(evt) {
     var jq = $(this);
-    var name = jq.attr(tag);
+    var target = jq.attr(tagname(plugin));
+    
 
     // do reverse check
-    $("[name="+name+"]").each(function(obj, evt) {
-      obj.checked = !obj.checked 
+    $("[name='"+target+"']").each(function(index, item) {
+      item.checked = !item.checked;
     });
   
   });
