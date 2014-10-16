@@ -11,7 +11,7 @@ https://github.com/lingceng
 
 Add `data-uno-revcheck` attribute to a check box or button, then the check box or button will reverse the check status of target check boxes.
 
-The value of `data-uno-revcheck` is the **name** of the target check boxes. 
+The value of `data-uno-revcheck` is the **name** of the target check boxes.
 
     <!-- Here is the check box to reverse other check boxes status -->
     <input type="checkbox" data-uno-revcheck="user_ids[]" />
