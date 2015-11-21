@@ -1,46 +1,21 @@
-#
-# jquery.unoutil.js
-#
-#
-
-# config
-prefix = "data-uno-"
+# https://github.com/lingceng/jquery.unoutil.js
 
 $ ->
-
+  # Uncheck or check all checkbox
   #
-  # reversely check the checkbox
+  # The value of `data-uno-checkall` is the **name** of the target check boxes.
   #
-  # value
-  #   name of target checkboxes to controll
+  #    <!-- Here is the check box to reverse other check boxes status -->
+  #    <input type="checkbox" data-uno-checkall="user_ids[]" />
   #
-  name = "#{prefix}revcheck"
-  $("[#{name}]").on "change", (evt) ->
+  #    <!-- Here is the targets -->
+  #    <input type="checkbox" name="user_ids[]" value="1" />
+  #    <input type="checkbox" name="user_ids[]" value="2" />
+  #
+  $("[data-uno-checkall]").on "change", (evt) ->
     btn = $(this)
-    target_name = btn.attr(name)
-
-    console.log name, target_name
-    # do reverse check
-    $("[name='#{target_name}']").each (index, item) ->
-      console.log item
-      item.checked = not item.checked
-      true
-
-    true
-
-  #
-  # uncheck or check all checkbox
-  #
-  # value
-  #   name of target checkboxes to controll
-  #
-  name = "#{prefix}checkall"
-  $("[#{name}]").on "change", (evt) ->
-    btn = $(this)
-    target_name = btn.attr(name)
-
+    target_name = btn.attr("data-uno-checkall")
     status = !!btn.prop('checked')
-
     # do check or uncheck all
     targets = $("[name='#{target_name}']")
     targets.each (index, item) ->
@@ -48,4 +23,3 @@ $ ->
       true
 
     true
-
